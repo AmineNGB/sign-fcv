@@ -1,0 +1,7 @@
+<h1>Séances d'entrainements d'aujourd'hui</h1>
+
+<% @sessions.each do |session| %>
+    <h2><%= session.group%></h2>
+    <h3><%= session.date%></h3>
+    <h3><%= session.time %></h3>
+<% end %>

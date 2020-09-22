@@ -14,7 +14,8 @@ user.save!
 
 session = Session.new
 session.group = "ado"
-session.horaire = "2020-09-22-19-30"
+session.date = "2020-09-22-19-30"
+session.time = "09/22/2020 19:30"
 
 session.save!
 
