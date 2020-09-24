@@ -5,24 +5,32 @@
 </div>
 
 <% else %>
-    <div class="container d-flex flex-column  align-items-center">
-        <h1 class="my-2">Séances d'entrainements d'aujourd'hui</h1>
-        <% if current_user.email == "amine@gmail.com" %>
+    <div class="container align-items-center">
+        <h1 class=" justify-content-center text-center">Séances d'entrainements d'aujourd'hui</h1>
+        <% if current_user.email === "amine@gmail.com" %>
             <%= link_to  "Nouvelle entrainement", new_training_path, class: "btn btn-primary" %><br>
         <% end %>
-        <% @trainings.each do |training| %>
-            <div class="card justify-content-center" style="width: 18rem;">
-            <%= image_tag "square_logo.jpg", class: "card-img-top" %>
-            <div class="card-body text-center">
-                <h5 class="card-title "><%= training.group%></h5>
-                <p class="card-text "><strong><%= training.date%> </strong></p>
-                <% if current_user.email ==! "amine@gmail.com" %>
-                    <a href="#" class="btn btn-primary">Je participe</a>
-                <% end %>
-            </div>
-            </div>
-        <% end %>
+        <div class="d-flex px-1">
+            <% @trainings.each do |training| %>
+                <div class="card justify-content-center" style="width: 18rem;">
+                    <%= image_tag "square_logo.jpg", class: "card-img-top" %>
+                    <div class="card-body text-center">
+                        <h5 class="card-title "><%= training.group%></h5>
+                        <p class="card-text "><strong><%= training.date.time.to_formatted_s(:short)%> </strong></p>
+                        <% if current_user.email.exclude?("amine@gmail.com") %>
+                            <%= link_to training_participants_path(training.id),
+                                    class: "btn btn-primary",
+                                    method: :post,
+                                    remote: true do %>
+                                    je participe
+                                <% end %>
+                        <% else %>
+                        <%= link_to  "Voir les Participants", participants_path, class: "btn btn-secondary" %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>        
     </div>
-
 <% end %>
 
