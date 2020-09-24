@@ -10,8 +10,10 @@
         <% if current_user.email === "amine@gmail.com" %>
             <%= link_to  "Nouvelle entrainement", new_training_path, class: "btn btn-primary" %><br>
         <% end %>
-        <div class="d-flex px-1">
+        <div class="d-flex">
             <% @trainings.each do |training| %>
+            <div class="row">
+                <div class="col">
                 <div class="card justify-content-center" style="width: 18rem;">
                     <%= image_tag "square_logo.jpg", class: "card-img-top" %>
                     <div class="card-body text-center">
@@ -25,12 +27,14 @@
                                     je participe
                                 <% end %>
                         <% else %>
-                        <%= link_to  "Voir les Participants", participants_path, class: "btn btn-secondary" %>
+                            <%= link_to  "Voir les Participants", training_path(training.id), class: "btn btn-secondary" %>
                         <% end %>
                     </div>
+                    </div>
                 </div>
-            <% end %>
-        </div>        
+            </div>
+            <% end %>   
+        </div>    
     </div>
 <% end %>
 

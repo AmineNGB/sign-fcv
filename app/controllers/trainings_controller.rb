@@ -1,6 +1,6 @@
 class TrainingsController < ApplicationController
   # skip_before_action :authenticate_user!
-  before_action :set_session, only: [:show]
+  before_action :set_training, only: [:show]
 
   def index
     @trainings = Training.all
@@ -17,6 +17,7 @@ class TrainingsController < ApplicationController
   end
 
   def show
+    @participants = @training.participants    
   end
 
   private
@@ -26,6 +27,6 @@ class TrainingsController < ApplicationController
   end
 
   def set_training
-    @training = training.find(params[:id])
+    @training = Training.find(params[:id])
   end
 end
