@@ -16,18 +16,17 @@ ActiveRecord::Schema.define(version: 2020_09_22_163043) do
   enable_extension "plpgsql"
 
   create_table "participants", force: :cascade do |t|
-    t.bigint "session_id", null: false
+    t.bigint "training_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["session_id"], name: "index_participants_on_session_id"
+    t.index ["training_id"], name: "index_participants_on_training_id"
     t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
+  create_table "trainings", force: :cascade do |t|
     t.string "group"
-    t.date "date"
-    t.time "time"
+    t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -47,6 +46,6 @@ ActiveRecord::Schema.define(version: 2020_09_22_163043) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "participants", "sessions"
+  add_foreign_key "participants", "trainings"
   add_foreign_key "participants", "users"
 end

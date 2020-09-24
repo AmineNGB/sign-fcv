@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>Modification de l'entrainement</h1>
+    <div class="forms">
+        <div class="session-form">
+            <%= simple_form_for(@training) do |f| %>
+            <%= f.input :date, as: :datetime, html5: true, order: [:day, :month, :year], label: "date et heure d'entrainement" %>
+            <%= f.input :group, as: :select, collection: ["benjamin", "minimes", "cadets", "baby", "body-taekwondo", "ados-adultes"], input_html: { class: "selectpicker", "data-actions-box" => "true" }, label: "choisir le groupe" %>
+            <%= f.submit "Créer cet entrainement!", class: 'btn bungee btn-primary submit mt-2 shadow-lg' %>
+            <% end %>
+        </div>
+    </div>
+</div>

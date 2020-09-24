@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
   devise_for :users
-  root to: 'pages#home'
-  resources :sessions
+  root to: 'trainings#index'
+  resources :trainings, only: [:index, :new, :create, :destroy, :edit]
   resources :participants
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
