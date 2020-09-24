@@ -7,7 +7,8 @@
         <h1 class="my-2 text-center">Liste des Participants par entrainement</h1>
         <div class="d-flex">
         <% @trainings.each do |training| %>
-            <div class="d-flex flex-column card bg-red">
+            <div class="d-flex flex-column card">
+            <h2>Signature: <%= training.participants.size %></h2>
                 <h2><%= training.date.time.to_formatted_s(:short) %></h2>
                 <% training.participants.each do |participant| %>
                     <h3><%= participant.user.nom %> <%= participant.user.prenom %></h3>
