@@ -13,7 +13,7 @@ class TrainingsController < ApplicationController
   def create
     @training = Training.new(training_params)
     @training.save!
-    redirect_to training_path
+    redirect_to trainings_path
   end
 
   def show
@@ -22,7 +22,7 @@ class TrainingsController < ApplicationController
   private
 
   def training_params
-    params.require(:training).permit(:group, :date, :time)
+    params.require(:training).permit(:group, :date)
   end
 
   def set_training
