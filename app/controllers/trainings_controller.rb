@@ -4,6 +4,12 @@ class TrainingsController < ApplicationController
 
   def index
     @trainings = Training.all
+    @participants = []
+    if current_user
+      current_user.participants.each do |t|
+        @participants << t.training.id
+      end
+    end
   end
 
   def new

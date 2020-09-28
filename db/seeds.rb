@@ -4,23 +4,30 @@ Participant.destroy_all
 
 
 user = User.new
-user.email = "amineneghbel@gmail.com"
+user.email = "thaoduong@gmail.com"
 user.password = "password"
-user.nom = "NEGHBEL"
-user.prenom = "Amine"
-user.phone = "0612241326"
+user.nom = "DUONG"
+user.prenom = "Thao"
+user.phone = "06XXXXXXXX"
 
 user.save!
 
-training = Training.new
-training.group = "ado"
-training.date = "2020-09-24-19-30"
+user2 = User.new
+user2.email = "amine@gmail.com"
+user2.password = "password"
+user2.nom = "NEGHBEL"
+user2.prenom = "Amine"
+user2.phone = "0612241326"
 
+user2.save!
 
-training.save!
+10.times do 
+    Training.new(group: "ado", date: Time.now).save
+end
 
-
-
-Participant.new(training_id: training.id, user_id: user.id)
+Participant.new(training_id: 1, user_id: user2.id).save
+Participant.new(training_id: 2, user_id: user2.id).save
+Participant.new(training_id: 3, user_id: user2.id).save
+Participant.new(training_id: 4, user_id: user2.id).save
 
 p "done"
