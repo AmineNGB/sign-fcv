@@ -4,7 +4,7 @@ Participant.destroy_all
 
 
 user = User.new
-user.email = "thaoduong@gmail.com"
+user.email = "thao@gmail.com"
 user.password = "password"
 user.nom = "DUONG"
 user.prenom = "Thao"

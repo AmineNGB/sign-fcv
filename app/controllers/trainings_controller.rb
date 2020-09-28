@@ -23,7 +23,12 @@ class TrainingsController < ApplicationController
   end
 
   def show
-    @participants = @training.participants    
+    @participants = @training.participants
+    respond_to do |format|
+      format.html
+      format.csv { send_data @participants.to_csv, filename: "Fiche de présence - #{Date.today}.csv" }
+    end
+
   end
 
   private
