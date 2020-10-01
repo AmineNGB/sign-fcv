@@ -31,3 +31,5 @@ Participant.new(training_id: 3, user_id: user2.id).save
 Participant.new(training_id: 4, user_id: user2.id).save
 
 p "done"
+
+
